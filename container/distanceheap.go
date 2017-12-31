@@ -1,6 +1,6 @@
 package container
 
-import "github.com/recursivecurry/gobox/typeclass/instance"
+import "github.com/recursivecurry/gobox/instance"
 
 type ValueWithDistance struct {
 	Distance instance.Integer

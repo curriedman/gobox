@@ -5,9 +5,21 @@ import (
 	"github.com/recursivecurry/gobox/typeclass/eq"
 	"github.com/recursivecurry/gobox/typeclass/enum"
 	"github.com/recursivecurry/gobox/typeclass/bounded"
+	"github.com/recursivecurry/gobox/typeclass/read"
+	"strconv"
+	"fmt"
 )
 
 type Integer int64
+
+func (i Integer) Read(s string) read.Interface {
+	val, _ := strconv.ParseInt(s, 10, 64)
+	return Integer(val)
+}
+
+func (i Integer) Show() string {
+	return fmt.Sprintf("%v", i)
+}
 
 const INTEGER Integer = Integer(0)
 
