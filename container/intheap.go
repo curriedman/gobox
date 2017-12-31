@@ -1,13 +1,15 @@
 package container
 
-type IntHeap []int
+import "github.com/recursivecurry/gobox/typeclass/instance"
+
+type IntHeap []instance.Integer
 
 func (h IntHeap) Len() int {
 	return len(h)
 }
 
 func (h IntHeap) Less(i, j int) bool {
-	return h[i] < h[j]
+	return h[i].Less(h[j])
 }
 
 func (h IntHeap) Swap(i, j int) {
@@ -15,7 +17,7 @@ func (h IntHeap) Swap(i, j int) {
 }
 
 func (h *IntHeap) Push(x interface{}) {
-	*h = append(*h, x.(int))
+	*h = append(*h, x.(instance.Integer))
 }
 
 func (h *IntHeap) Pop() interface{} {

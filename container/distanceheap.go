@@ -1,14 +1,20 @@
 package container
 
-type NodeWithDistance = [2]int
-type CloseNodes []NodeWithDistance
+import "github.com/recursivecurry/gobox/typeclass/instance"
+
+type ValueWithDistance struct {
+	Distance instance.Integer
+	Value interface{}
+}
+
+type CloseNodes []ValueWithDistance
 
 func (ns CloseNodes) Len() int {
 	return len(ns)
 }
 
 func (ns CloseNodes) Less(i, j int) bool {
-	return ns[i][1] < ns[j][1]
+	return ns[i].Distance.Less(ns[j].Distance)
 }
 
 func (ns CloseNodes) Swap(i, j int) {
@@ -16,7 +22,7 @@ func (ns CloseNodes) Swap(i, j int) {
 }
 
 func (ns *CloseNodes) Push(x interface{}) {
-	*ns = append(*ns, x.(NodeWithDistance))
+	*ns = append(*ns, x.(ValueWithDistance))
 }
 
 func (ns *CloseNodes) Pop() interface{} {
