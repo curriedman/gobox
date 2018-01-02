@@ -3,7 +3,7 @@ package instance
 import "testing"
 
 func TestFloat_Read(t *testing.T) {
-	pi := FLOAT.Read("3.14").(Float)
+	pi := STATIC.FuncRead("3.14").(Float)
 	if pi.Ne(Float(3.14)) {
 		t.Errorf("Float Read Fail")
 	}

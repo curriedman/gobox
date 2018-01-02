@@ -12,7 +12,9 @@ import (
 
 type Integer int64
 
-func (i Integer) Read(s string) read.Interface {
+const INTEGER Integer = Integer(0)
+
+func (i Integer) FuncRead(s string) read.Interface {
 	val, _ := strconv.ParseInt(s, 10, 64)
 	return Integer(val)
 }
@@ -21,16 +23,12 @@ func (i Integer) Show() string {
 	return fmt.Sprintf("%v", i)
 }
 
-const INTEGER Integer = Integer(0)
-
-func (i Integer) ToEnum(a int64) enum.Interface {
+func (i Integer) FuncToEnum(a int64) enum.Interface {
 	return Integer(a)
 }
 
-func (i Integer) FromEnum(a enum.Interface) int64 {
-	val := a.(Integer)
-
-	return int64(val)
+func (i Integer) FromEnum() int64 {
+	return int64(i)
 }
 
 func (i Integer) Eq(other eq.Interface) bool {
@@ -45,11 +43,11 @@ func (i Integer) Ne(other eq.Interface) bool {
 	return !i.Eq(other)
 }
 
-func (i Integer) MinBound() bounded.Interface {
+func (i Integer) FuncMinBound() bounded.Interface {
 	return Integer(math.MinInt64)
 }
 
-func (i Integer) MaxBound() bounded.Interface {
+func (i Integer) FuncMaxBound() bounded.Interface {
 	return Integer(math.MaxInt64)
 }
 

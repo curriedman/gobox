@@ -1,4 +1,4 @@
-package container
+package heap
 
 import "github.com/recursivecurry/gobox/instance"
 

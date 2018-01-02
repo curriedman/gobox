@@ -3,7 +3,7 @@ package instance
 import "testing"
 
 func TestInteger_Read(t *testing.T) {
-	if INTEGER.Read("1").(Integer).Ne(Integer(1)) {
+	if STATIC.FuncRead("1").(Integer).Ne(Integer(1)) {
 		t.Errorf("Integer Read Fail")
 	}
 }

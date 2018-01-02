@@ -23,7 +23,7 @@ func (f Float) Ne(other eq.Interface) bool {
 	return !f.Eq(other)
 }
 
-func (f Float) Read(s string) read.Interface {
+func (f Float) FuncRead(s string) read.Interface {
 	val, _ := strconv.ParseFloat(s, 64)
 	return Float(val)
 }
